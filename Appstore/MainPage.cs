@@ -21,7 +21,8 @@ public sealed partial class MainPage : Page
         this.Content = H;
         var bar = new StackPanel
         {
-
+            
+            Spacing = 0,
             Background = new SolidColorBrush(Colors.Transparent),
             Children =
             {
@@ -41,24 +42,24 @@ public sealed partial class MainPage : Page
         {
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
-            bar.Height = this.ActualHeight / 18;
-            bar.Height = this.ActualWidth;
-            ((Rectangle)bar.Children[1]).Height = bar.Height / 50;
-            ((Rectangle)bar.Children[0]).Height = bar.Height - bar.Height / 50;
+            bar.Height = this.ActualHeight / 13;
+            bar.Width = this.ActualWidth;
+            ((Rectangle)bar.Children[1]).Height = bar.Height / 70;
+            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 50);
             ((Rectangle)bar.Children[1]).Width = bar.Width;
-            ((Rectangle)bar.Children[0]).Height = bar.Width;
+            ((StackPanel)bar.Children[0]).Width = bar.Width;
 
         };
         this.Loaded += (s, e) =>
         {
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
-            bar.Height = this.ActualHeight / 18;
-            bar.Height = this.ActualWidth;
-            ((Rectangle)bar.Children[1]).Height = bar.Height / 50;
-            ((Rectangle)bar.Children[0]).Height = bar.Height - bar.Height / 50;
+            bar.Height = this.ActualHeight / 13;
+            bar.Width = this.ActualWidth;
+            ((Rectangle)bar.Children[1]).Height = bar.Height / 70;
+            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 50);
             ((Rectangle)bar.Children[1]).Width = bar.Width;
-            ((Rectangle)bar.Children[0]).Height = bar.Width;
+            ((StackPanel)bar.Children[0]).Width = bar.Width;
 
         };
         Helpers.Add(H, bar, 0, 0);

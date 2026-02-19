@@ -6,11 +6,9 @@ public sealed partial class MainPage : Page
     {
         var H = new Grid
         {
-            Width = 1000,
-            Height = 1000,
             RowDefinitions =
             {
-                new RowDefinition { Height = GridLength.Auto}
+                new RowDefinition { Height = GridLength.Auto},
                 new RowDefinition { Height = new GridLength(1, GridUnitType.Star)}
             },
             ColumnDefinitions =
@@ -23,30 +21,38 @@ public sealed partial class MainPage : Page
         this.Content = H;
         var bar = new StackPanel
         {
-            
+
             Background = new SolidColorBrush(Colors.White),
-            Height = 60,
             Children =
             {
                 new StackPanel
                 {
-                    
-                }
+                },
                 new Rectangle
                 {
-                    Height = 2,
-                    Width = 1000,
                     Fill = new SolidColorBrush(Colors.Black)
                 }
 
+            },
+
         };
-        Helpers.Add(H, bar, 0, 0)
+        this.SizeChanged += (s, e) =>
+        {
+            H.Width = this.ActualWidth;
+            H.Height = this.ActualHeight;
+            bar.Height = this.ActualHeight / 18;
+            bar.Height = this.ActualWidth;
+            ((Rectangle)bar.Children[1]).Height = bar.Height / 50;
+            ((Rectangle)bar.Children[1]).Width = bar.Width;
+
+        };
+        Helpers.Add(H, bar, 0, 0);
     }
 }
 
 public class Helpers
 {
-    static void Add(Grid grid, UIElement element, int row, int column)
+    public static void Add(Grid grid, UIElement element, int row, int column)
     {
         grid.Children.Remove(element);
         Grid.SetRow(element, row);

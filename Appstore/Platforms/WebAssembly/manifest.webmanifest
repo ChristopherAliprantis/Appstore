@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "Appstore",
+  "display": "standalone",
+  "name": "Appstore",
+  "short_name": "Appstore",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}

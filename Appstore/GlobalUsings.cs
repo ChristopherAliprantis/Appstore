@@ -7,5 +7,5 @@ global using Microsoft.Extensions.Localization;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
 global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
-global using Color = Windows.UI.Color;
+global using Color = Microsoft.UI.Colors;
 [assembly: Uno.Extensions.Reactive.Config.BindableGenerationTool(3)]

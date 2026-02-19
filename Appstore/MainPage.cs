@@ -8,6 +8,17 @@ public sealed partial class MainPage : Page
         {
             Width = 1000,
             Height = 1000,
+            RowDefinitions =
+            {
+                new RowDefinition { Height = GridLength.Auto}
+                new RowDefinition { Height = new GridLength(1, GridUnitType.Star)}
+            },
+            ColumnDefinitions =
+            {
+                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star)}
+            }
+
+
         };
         this.Content = H;
         var bar = new StackPanel
@@ -19,7 +30,7 @@ public sealed partial class MainPage : Page
             {
                 new StackPanel
                 {
-
+                    
                 }
                 new Rectangle
                 {
@@ -29,7 +40,7 @@ public sealed partial class MainPage : Page
                 }
 
         };
-
+        Helpers.Add(H, bar, 0, 0)
     }
 }
 

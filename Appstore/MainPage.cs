@@ -27,6 +27,7 @@ public sealed partial class MainPage : Page
             {
                 new StackPanel
                 {
+                    Background = new SolidColorBrush(Colors.White),
                 },
                 new Rectangle
                 {
@@ -37,6 +38,18 @@ public sealed partial class MainPage : Page
 
         };
         this.SizeChanged += (s, e) =>
+        {
+            H.Width = this.ActualWidth;
+            H.Height = this.ActualHeight;
+            bar.Height = this.ActualHeight / 18;
+            bar.Height = this.ActualWidth;
+            ((Rectangle)bar.Children[1]).Height = bar.Height / 50;
+            ((Rectangle)bar.Children[0]).Height = bar.Height - bar.Height / 50;
+            ((Rectangle)bar.Children[1]).Width = bar.Width;
+            ((Rectangle)bar.Children[0]).Height = bar.Width;
+
+        };
+        this.Loaded += (s, e) =>
         {
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;

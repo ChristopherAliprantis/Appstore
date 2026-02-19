@@ -22,7 +22,7 @@ public sealed partial class MainPage : Page
         var bar = new StackPanel
         {
 
-            Background = new SolidColorBrush(Colors.White),
+            Background = new SolidColorBrush(Colors.Transparent),
             Children =
             {
                 new StackPanel
@@ -56,7 +56,9 @@ public sealed partial class MainPage : Page
             bar.Height = this.ActualHeight / 18;
             bar.Height = this.ActualWidth;
             ((Rectangle)bar.Children[1]).Height = bar.Height / 50;
+            ((Rectangle)bar.Children[0]).Height = bar.Height - bar.Height / 50;
             ((Rectangle)bar.Children[1]).Width = bar.Width;
+            ((Rectangle)bar.Children[0]).Height = bar.Width;
 
         };
         Helpers.Add(H, bar, 0, 0);

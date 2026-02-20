@@ -21,7 +21,7 @@ public sealed partial class MainPage : Page
         this.Content = H;
         var bar = new StackPanel
         {
-            
+
             Spacing = 0,
             Background = new SolidColorBrush(Colors.Transparent),
             Children =
@@ -29,6 +29,22 @@ public sealed partial class MainPage : Page
                 new StackPanel
                 {
                     Background = new SolidColorBrush(Colors.White),
+                    Orientation = Orientation.Horizontal,
+                    Spacing = 0,
+                    Children =
+                    {
+                        new TextButton
+                        {
+                            Text = "Apps",
+
+                        },
+                        new TextButton
+                        {
+                            Text = "Info",
+
+                        }
+                    }
+
                 },
                 new Rectangle
                 {
@@ -45,10 +61,18 @@ public sealed partial class MainPage : Page
             bar.Height = this.ActualHeight / 17;
             bar.Width = this.ActualWidth;
             ((Rectangle)bar.Children[1]).Height = bar.Height / 25;
-            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 25);
+            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 5);
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
-
+            double pad = bar.Height / 12;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad/4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad/4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height = bar.Height - (pad / 2);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height = bar.Height - (pad / 2);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
         };
         this.Loaded += (s, e) =>
         {
@@ -60,7 +84,15 @@ public sealed partial class MainPage : Page
             ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 5);
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
-
+            double pad = bar.Height / 12;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad /4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad/4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height = bar.Height - (pad / 2);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height = bar.Height - (pad / 2);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
         };
         Helpers.Add(H, bar, 0, 0);
     }
@@ -84,7 +116,7 @@ public class TextButton : TextBlock
         this.PointerEntered += (s, e) =>
         {
             this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.Hand);
-            this.Foreground = new SolidColorBrush(Colors.Blue);
+            this.Foreground = new SolidColorBrush(Colors.RoyalBlue);
         };
         this.PointerExited += (s, e) =>
         {

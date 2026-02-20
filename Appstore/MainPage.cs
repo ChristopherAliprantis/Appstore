@@ -77,3 +77,20 @@ public class Helpers
     }
 }
 
+public class TextButton : TextBlock
+{
+    public TextButton() 
+    {
+        this.PointerEntered += (s, e) =>
+        {
+            this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.Hand);
+            this.Foreground = new SolidColorBrush(Colors.Blue);
+        };
+        this.PointerExited += (s, e) =>
+        {
+            this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.Arrow); 
+            this.Foreground = new SolidColorBrush(Colors.Black);
+        };
+    }
+    
+}

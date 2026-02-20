@@ -42,10 +42,10 @@ public sealed partial class MainPage : Page
         {
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
-            bar.Height = this.ActualHeight / 13;
+            bar.Height = this.ActualHeight / 17;
             bar.Width = this.ActualWidth;
-            ((Rectangle)bar.Children[1]).Height = bar.Height / 70;
-            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 50);
+            ((Rectangle)bar.Children[1]).Height = bar.Height / 25;
+            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 25);
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
 
@@ -54,10 +54,10 @@ public sealed partial class MainPage : Page
         {
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
-            bar.Height = this.ActualHeight / 13;
+            bar.Height = this.ActualHeight / 17;
             bar.Width = this.ActualWidth;
-            ((Rectangle)bar.Children[1]).Height = bar.Height / 70;
-            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 50);
+            ((Rectangle)bar.Children[1]).Height = bar.Height / 25;
+            ((StackPanel)bar.Children[0]).Height = bar.Height - (bar.Height / 5);
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
 

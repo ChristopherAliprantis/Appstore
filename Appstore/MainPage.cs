@@ -64,6 +64,10 @@ public sealed partial class MainPage : Page
             App.rootFrame.Navigate(typeof(InfoPage));
             await Task.Delay(200);
         };
+        var content = new ScrollViewer
+        {
+
+        };
         this.SizeChanged += (s, e) =>
         {
             var bounds = App.MainWindow.Bounds;
@@ -84,6 +88,8 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
+            content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
+            content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
         };
         this.Loaded += (s, e) =>
         {
@@ -105,6 +111,8 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
+            content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
+            content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
         };
         Helpers.Add(H, bar, 0, 0);
     }

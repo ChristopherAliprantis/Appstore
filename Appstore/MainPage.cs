@@ -66,6 +66,7 @@ public sealed partial class MainPage : Page
         };
         this.SizeChanged += (s, e) =>
         {
+            var bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
             bar.Height = this.ActualHeight / 17;
@@ -86,6 +87,7 @@ public sealed partial class MainPage : Page
         };
         this.Loaded += (s, e) =>
         {
+            var bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
             bar.Height = this.ActualHeight / 17;

@@ -14,7 +14,7 @@ public partial class App : Application
         this.InitializeComponent();
     }
 
-    protected Window? MainWindow { get; private set; }
+    public static Window? MainWindow { get; private set; }
     public static Frame? rootFrame;
     protected IHost? Host { get; private set; }
 
@@ -56,10 +56,6 @@ public partial class App : Application
                 })
             );
         MainWindow = builder.Window;
-
-#if DEBUG
-        MainWindow.UseStudio();
-#endif
         MainWindow.SetWindowIcon();
 
         Host = builder.Build();

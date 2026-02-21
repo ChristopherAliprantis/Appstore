@@ -81,6 +81,7 @@ public sealed partial class InfoPage : Page
         };
         this.SizeChanged += (s, e) =>
         {
+            var bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
             bar.Height = this.ActualHeight / 17;
@@ -100,10 +101,12 @@ public sealed partial class InfoPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            content.FontSize = content.Width / 68;
+            if (bounds.Width > bounds.Height) content.FontSize = content.Width / 65;
+            else content.FontSize = content.Width / 20;
         };
         this.Loaded += (s, e) =>
         {
+            var bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
             bar.Height = this.ActualHeight / 17;
@@ -123,7 +126,8 @@ public sealed partial class InfoPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            content.FontSize = content.Width / 68;
+            if (bounds.Width > bounds.Height)  content.FontSize = content.Width / 65;
+            else content.FontSize = content.Width / 20;
         };
         Helpers.Add(H, bar, 0, 0);
         Helpers.Add(H, content, 1, 0);

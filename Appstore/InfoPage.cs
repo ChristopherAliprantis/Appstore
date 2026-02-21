@@ -89,10 +89,10 @@ public sealed partial class InfoPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
-            content.Margin = new Thickness(this.ActualWidth / 14, bar.Height / 9, 0, 0);
+            content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Height = H.RowDefinitions[1].ActualHeight - bar.Height / 9;
-            content.Width = this.ActualWidth - this.ActualWidth / 14;
-            content.FontSize = content.Height / 34;
+            content.Width = bar.Width - bar.Width / 14;
+            content.FontSize = content.Height / 38;
         };
         this.Loaded += (s, e) =>
         {
@@ -113,10 +113,10 @@ public sealed partial class InfoPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
-            content.Margin = new Thickness(this.ActualWidth/14,bar.Height / 9,0,0);
+            content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Height = H.RowDefinitions[1].ActualHeight - bar.Height / 9;
-            content.Width = this.ActualWidth - this.ActualWidth / 14;
-            content.FontSize = content.Height / 34;
+            content.Width = bar.Width - bar.Width / 14;
+            content.FontSize = content.Height / 38;
         };
         Helpers.Add(H, bar, 0, 0);
         Helpers.Add(H, content, 1, 0);

@@ -13,9 +13,9 @@
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
         <!-- Package Publisher -->
-        <ApplicationPublisher>alipr_1j0dfgh</ApplicationPublisher>
+        <ApplicationPublisher>Christopher Aliprantis</ApplicationPublisher>
         <!-- Package Description -->
-        <Description>Appstore .</Description>
+        <Description>Appstore, an appstore for great apps</Description>
 
         <!--
       UnoFeatures are used to quickly add and manage features enabled for your app.
@@ -36,3 +36,5 @@
     </PropertyGroup>
 
 </Project>
+
+

@@ -58,7 +58,16 @@ public sealed partial class InfoPage : Page
         {
             Text = "You can distribute the APK or EXE(+ DLLs and other stuff) files that you get from the app downloads; you need to say that github.com/ChristopherAliprantis made it. Also you can repackage the app in another package format.",
             TextWrapping = TextWrapping.WrapWholeWords,
-            Foreground = new SolidColorBrush(Colors.Black)
+            Foreground = new SolidColorBrush(Colors.Black),
+            IsTextSelectionEnabled = true,
+        };
+        content.PointerEntered += (s, e) =>
+        {
+            this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.IBeam);
+        };
+        content.PointerEntered += (s, e) =>
+        {
+            this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.Arrow);
         };
         ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Tapped += async(s, e) =>
         {
@@ -90,9 +99,8 @@ public sealed partial class InfoPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
-            content.Height = (H.Height - bar.Height) - bar.Height / 9;
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            content.FontSize = content.Height / 36;
+            content.FontSize = content.Width / 68;
         };
         this.Loaded += (s, e) =>
         {
@@ -114,9 +122,8 @@ public sealed partial class InfoPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height / 1.6;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
-            content.Height = (H.Height - bar.Height) - bar.Height / 9;
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            content.FontSize = content.Height / 36;
+            content.FontSize = content.Width / 68;
         };
         Helpers.Add(H, bar, 0, 0);
         Helpers.Add(H, content, 1, 0);

@@ -81,6 +81,7 @@ public sealed partial class DynamicPage : Page
                 {
                     Text = DynamicDetails.AppName,
                 },
+                //ToDo: add a margin making ^ go down
                 new TextBlock
                 {
                     Text = DynamicDetails.AppDescription,

@@ -54,12 +54,12 @@ public sealed partial class MainPage : Page
             },
 
         };
-        ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Tapped += async (s, e) =>
+        ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Tapped += async(s, e) =>
         {
             App.rootFrame.Navigate(typeof(MainPage));
             await Task.Delay(200);
         };
-        ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Tapped += async (s, e) =>
+        ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Tapped += async(s, e) =>
         {
             App.rootFrame.Navigate(typeof(InfoPage));
             await Task.Delay(200);

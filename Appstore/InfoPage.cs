@@ -56,7 +56,7 @@ public sealed partial class InfoPage : Page
         };
         var content = new TextBlock
         {
-            Text = "This is an Appstore for apps made by https://github.com/ChristopherAliprantis,\nif you have questions or issues about these apps contact aliprantis@proton.me\n with \"App Q & A\" as email subject.",
+            Text = "You can distribute the APK or EXE files; you need to say you distributed this app on that appstore and https://github.com/ChristopherAliprantis made it.",
             TextWrapping = TextWrapping.WrapWholeWords,
             Foreground = new SolidColorBrush(Colors.Black)
         };

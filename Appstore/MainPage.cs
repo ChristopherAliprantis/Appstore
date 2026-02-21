@@ -71,11 +71,10 @@ public sealed partial class MainPage : Page
             {
                 new DDsendBut
                 {
-                    Width = 200,
-                    Height = 200,
                     imp = "ms-appx:///Assets/ToDologo.png",
                     des = "ToDo, your ultimate time management app",
-                    nm = "ToDo"
+                    nm = "ToDo",
+                    Content = "ToDo"
                 }
             }
 
@@ -108,6 +107,9 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 7;
+            ((FrameworkElement)ccontent.Children[0]).Height = bar.Width / 7;
+            ((Button)ccontent.Children[0]).FontSize = ((FrameworkElement)ccontent.Children[0]).Height / 3.6;
         };
         this.Loaded += (s, e) =>
         {
@@ -131,9 +133,12 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 7;
+            ((FrameworkElement)ccontent.Children[0]).Height = bar.Width / 7;
+            ((Button)ccontent.Children[0]).FontSize = ((FrameworkElement)ccontent.Children[0]).Height / 3.6;
         };
         Helpers.Add(H, bar, 0, 0);
-        Helpers.Add(H, ccontent, 1, 0);
+        Helpers.Add(H, content, 1, 0);
     }
 }
 
@@ -155,7 +160,7 @@ public class TextButton : TextBlock
         this.PointerEntered += (s, e) =>
         {
             this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.Hand);
-            this.Foreground = new SolidColorBrush(Colors.RoyalBlue);
+            this.Foreground = new SolidColorBrush(Colors.Blue);
         };
         this.PointerExited += (s, e) =>
         {

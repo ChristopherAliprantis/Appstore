@@ -110,7 +110,8 @@ public sealed partial class DynamicPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
+            if (bounds.Width > bounds.Height) ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
+            else ((FrameworkElement)content.Children[0]).Width = bar.Width / 3.8;
             ((FrameworkElement)content.Children[0]).Height = ((FrameworkElement)content.Children[0]).Width;
         };
         this.Loaded += (s, e) =>
@@ -135,7 +136,8 @@ public sealed partial class DynamicPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
+            if (bounds.Width > bounds.Height) ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
+            else ((FrameworkElement)content.Children[0]).Width = bar.Width / 3.8;
             ((FrameworkElement)content.Children[0]).Height = ((FrameworkElement)content.Children[0]).Width;
         };
         Helpers.Add(H, bar, 0, 0);

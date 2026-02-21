@@ -1,3 +1,4 @@
 var UnoAppManifest = {
-    displayName: "Appstore"
+    displayName: "Appstore",
+    splashScreenImage: "Assets/Splash/splash_screen.svg",
 }

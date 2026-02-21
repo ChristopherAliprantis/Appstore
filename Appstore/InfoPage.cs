@@ -56,7 +56,7 @@ public sealed partial class InfoPage : Page
         };
         var content = new TextBlock
         {
-            Text = "This is an Appstore for apps made by https://github.com/ChristopherAliprantis,\nif you have questions or issues about these apps contact aliprantis@proton.me\n with \"App Q & A\" as email subject.",
+            Text = "You can distribute the APK or EXE files; you need to say you distributed this app on that appstore and https://github.com/ChristopherAliprantis made it.",
             TextWrapping = TextWrapping.WrapWholeWords,
             Foreground = new SolidColorBrush(Colors.Black)
         };
@@ -91,6 +91,7 @@ public sealed partial class InfoPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(this.ActualWidth / 14, bar.Height / 9, 0, 0);
             content.Height = H.RowDefinitions[1].ActualHeight - bar.Height / 9;
+            content.Width = this.ActualWidth - this.ActualWidth / 14;
             content.FontSize = content.Height / 34;
         };
         this.Loaded += (s, e) =>

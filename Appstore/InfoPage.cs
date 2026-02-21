@@ -56,7 +56,7 @@ public sealed partial class InfoPage : Page
         };
         var content = new TextBlock
         {
-            Text = "You can distribute the APK or EXE files; you need to say you distributed this app on that appstore and https://github.com/ChristopherAliprantis made it.",
+            Text = "You can distribute the APK or EXE(+ DLLs and other stuff) files that you get from the app downloads; you need to say that https://github.com/ChristopherAliprantis made it. Also you can repackage the app in another package format.",
             TextWrapping = TextWrapping.WrapWholeWords,
             Foreground = new SolidColorBrush(Colors.Black)
         };

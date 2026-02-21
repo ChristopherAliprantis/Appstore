@@ -144,5 +144,33 @@ public class TextButton : TextBlock
             this.Foreground = new SolidColorBrush(Colors.Black);
         };
     }
-    
+
 }
+
+public class DynamicDetails
+{
+    public static List<(string, string)>? downloadlinks; // (link name, link path)
+    public static Image? im;
+    public static string? AppName;
+    public static string? AppDescription;
+}
+
+public class DDsendBut : Button
+{
+    public string? des;
+    public Image? im;
+    public List<(string, string)>? dl;
+    public string? nm;
+    public DDsendBut()
+    {
+        this.Click += (s, e) =>
+        {
+            DynamicDetails.AppDescription = des;
+            DynamicDetails.downloadlinks = dl;
+            DynamicDetails.im = im;
+            DynamicDetails.AppName = nm;
+            //App.rootFrame.Navigate(typeof(DynamicPage));
+        };
+    }
+}
+

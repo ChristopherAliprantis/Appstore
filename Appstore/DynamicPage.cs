@@ -1,8 +1,10 @@
+using Microsoft.UI.Xaml.Media.Imaging;
+
 namespace Appstore;
 
-public sealed partial class MainPage : Page
+public sealed partial class DynamicPage : Page
 {
-    public MainPage()
+    public DynamicPage()
     {
         var H = new Grid
         {
@@ -54,7 +56,6 @@ public sealed partial class MainPage : Page
             },
 
         };
-
         ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Tapped += async(s, e) =>
         {
             App.rootFrame.Navigate(typeof(MainPage));
@@ -65,27 +66,28 @@ public sealed partial class MainPage : Page
             App.rootFrame.Navigate(typeof(InfoPage));
             await Task.Delay(200);
         };
-        var ccontent = new StackPanel
+        var content = new StackPanel
         {
+            Spacing = 0,
             Children =
             {
-                new DDsendBut
+                new Image
                 {
-                    Width = 200,
-                    Height = 200,
-                    imp = "ms-appx:///Assets/ToDologo.png",
-                    des = "ToDo, your ultimate time management app",
-                    nm = "ToDo"
-                }
+                    Source = new BitmapImage(new Uri(DynamicDetails.impath)),
+                    Stretch = Stretch.UniformToFill,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                },
+                new TextBlock
+                {
+                    Text = DynamicDetails.AppName,
+                },
+                new TextBlock
+                {
+                    Text = DynamicDetails.AppDescription,
+                },
             }
 
-
         };
-        var content = new ScrollViewer
-        {
-            Content = ccontent
-        };
-        
         this.SizeChanged += (s, e) =>
         {
             var bounds = App.MainWindow.Bounds;
@@ -98,8 +100,8 @@ public sealed partial class MainPage : Page
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
             double pad = bar.Height / 12;
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad/4);
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad/4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad / 4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad / 4);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height = bar.Height - (pad / 2);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height = bar.Height - (pad / 2);
@@ -108,6 +110,8 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
+            ((FrameworkElement)content.Children[0]).Height = ((FrameworkElement)content.Children[0]).Width;
         };
         this.Loaded += (s, e) =>
         {
@@ -121,8 +125,8 @@ public sealed partial class MainPage : Page
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
             double pad = bar.Height / 12;
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad /4);
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad/4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad / 4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad / 4);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height = bar.Height - (pad / 2);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height = bar.Height - (pad / 2);
@@ -131,65 +135,11 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
+            ((FrameworkElement)content.Children[0]).Height = ((FrameworkElement)content.Children[0]).Width;
         };
         Helpers.Add(H, bar, 0, 0);
-        Helpers.Add(H, ccontent, 1, 0);
-    }
-}
-
-public class Helpers
-{
-    public static void Add(Grid grid, UIElement element, int row, int column)
-    {
-        grid.Children.Remove(element);
-        Grid.SetRow(element, row);
-        Grid.SetColumn(element, column);
-        grid.Children.Add(element);
-    }
-}
-
-public class TextButton : TextBlock
-{
-    public TextButton() 
-    {
-        this.PointerEntered += (s, e) =>
-        {
-            this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.Hand);
-            this.Foreground = new SolidColorBrush(Colors.RoyalBlue);
-        };
-        this.PointerExited += (s, e) =>
-        {
-            this.ProtectedCursor = Microsoft.UI.Input.InputSystemCursor.Create(Microsoft.UI.Input.InputSystemCursorShape.Arrow); 
-            this.Foreground = new SolidColorBrush(Colors.Black);
-        };
+        Helpers.Add(H, content, 1, 0);
     }
 
 }
-
-public class DynamicDetails
-{
-    public static List<(string, string)>? downloadlinks; // (link name, link path)
-    public static string? impath;
-    public static string? AppName;
-    public static string? AppDescription;
-}
-
-public class DDsendBut : Button
-{
-    public string? des;
-    public string? imp;
-    public List<(string, string)>? dl; // <name, path>
-    public string? nm;
-    public DDsendBut()
-    {
-        this.Click += (s, e) =>
-        {
-            DynamicDetails.AppDescription = des;
-            DynamicDetails.downloadlinks = dl;
-            DynamicDetails.impath = imp;
-            DynamicDetails.AppName = nm;
-            App.rootFrame.Navigate(typeof(DynamicPage));
-        };
-    }
-}
-

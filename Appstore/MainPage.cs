@@ -107,8 +107,9 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 7;
-            ((FrameworkElement)ccontent.Children[0]).Height = bar.Width / 7;
+            if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 7;
+            else ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 3.8;
+            ((FrameworkElement)ccontent.Children[0]).Height = ((FrameworkElement)ccontent.Children[0]).Width;
             ((Button)ccontent.Children[0]).FontSize = ((FrameworkElement)ccontent.Children[0]).Height / 3.6;
         };
         this.Loaded += (s, e) =>
@@ -133,8 +134,9 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 7;
-            ((FrameworkElement)ccontent.Children[0]).Height = bar.Width / 7;
+            if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 7;
+            else ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 3.8;
+            ((FrameworkElement)ccontent.Children[0]).Height = ((FrameworkElement)ccontent.Children[0]).Width;
             ((Button)ccontent.Children[0]).FontSize = ((FrameworkElement)ccontent.Children[0]).Height / 3.6;
         };
         Helpers.Add(H, bar, 0, 0);

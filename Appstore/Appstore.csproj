@@ -4,44 +4,39 @@
         <OutputType>Exe</OutputType>
         <UnoSingleProject>true</UnoSingleProject>
 
-        <!-- Global disable of the Resizetizer task -->
-        <UnoSkipResizetizer>true</UnoSkipResizetizer>
-
+        <!-- IDENTITY -->
         <ApplicationTitle>Appstore</ApplicationTitle>
         <ApplicationId>com.companyname.Appstore</ApplicationId>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationPublisher>Christopher Aliprantis</ApplicationPublisher>
+        <Description>Appstore, an appstore for great apps</Description>
+
+        <!-- FIX 1: KILL THE RESIZETIZER ENGINE GLOBALLY -->
+        <UnoSkipResizetizer>true</UnoSkipResizetizer>
+        <UnoResizetizerIsWorkerPoolEnabled>false</UnoResizetizerIsWorkerPoolEnabled>
 
         <UnoFeatures>
             CSharpMarkup;Lottie;Hosting;Toolkit;MVUX;Configuration;Http;Serialization;Localization;ThemeService;
         </UnoFeatures>
     </PropertyGroup>
 
+    <!-- FIX 2: STRIP ALL ASSETS FROM THE SDK'S AUTOMATIC RESIZE LISTS -->
     <ItemGroup>
-        <!-- 1. Tell the SDK to STOP treating these as resizable images -->
+        <!-- This removes them from the crashing SkiaSharp "ProcessImageResize" code path -->
         <UnoImage Remove="Assets\**\*.svg" />
         <UnoIcon Remove="Assets\**\*.svg" />
         <UnoSplashScreen Remove="Assets\**\*.svg" />
+        <None Remove="Assets\**\*.svg" />
 
-        <!-- 2. Manually include them as Content so they just get copied -->
-        <Content Include="Assets\matrixlogo.svg" />
-        <Content Include="Assets\todologo.svg" />
-        <Content Include="Assets\Icons\icon.svg" />
-        <Content Include="Assets\splash\splash_screen.svg" />
+        <!-- FIX 3: INCLUDE AS RAW CONTENT (Direct Copy, No Pixel Allocation) -->
+        <Content Include="Assets\**\*.svg" />
     </ItemGroup>
 
-    <!-- 3. The "Force Kill" Target: Replaces the crashing task with an empty one -->
-  <Target Name="UnoResizetizeImages" />
-  <Target Name="UnoResizetizeIcons" />
-  
-  <ItemGroup>
-    <!-- Force the SDK to stop treating these as images -->
-    <UnoImage Remove="@(UnoImage)" />
-    <UnoIcon Remove="@(UnoIcon)" />
-    <UnoSplashScreen Remove="@(UnoSplashScreen)" />
-    
-    <!-- Manually include them so they just copy over -->
-    <Content Include="Assets\**\*.svg" />
-  </ItemGroup>
+    <!-- FIX 4: OVERRIDE THE TARGETS (The Nuclear Option) -->
+    <!-- Redefining these as 'empty' ensures the crashing code can NEVER execute -->
+    <Target Name="UnoResizetizeImages" BeforeTargets="CoreCompile" />
+    <Target Name="UnoResizetizeIcons" BeforeTargets="CoreCompile" />
+    <Target Name="UnoResizetizeSplashScreens" BeforeTargets="CoreCompile" />
+
 </Project>

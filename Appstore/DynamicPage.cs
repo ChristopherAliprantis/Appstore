@@ -114,6 +114,13 @@ public sealed partial class DynamicPage : Page
             if (bounds.Width > bounds.Height) ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
             else ((FrameworkElement)content.Children[0]).Width = bar.Width / 2.8;
             ((FrameworkElement)content.Children[0]).Height = ((FrameworkElement)content.Children[0]).Width;
+            ((FrameworkElement)content.Children[1]).Margin = new Thickness(0, (H.Height - bar.Height) / 64, 0, 0);
+            ((TextBlock)content.Children[1]).Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            if (bounds.Width > bounds.Height) ((TextBlock)content.Children[1]).FontSize = content.Width / 65;
+            else ((TextBlock)content.Children[1]).FontSize = ((TextBlock)content.Children[1]).Width / 20;
+            ((TextBlock)content.Children[2]).Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            if (bounds.Width > bounds.Height) ((TextBlock)content.Children[2]).FontSize = content.Width / 65;
+            else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 20;
         };
         this.Loaded += (s, e) =>
         {
@@ -140,6 +147,14 @@ public sealed partial class DynamicPage : Page
             if (bounds.Width > bounds.Height) ((FrameworkElement)content.Children[0]).Width = bar.Width / 7;
             else ((FrameworkElement)content.Children[0]).Width = bar.Width / 2.8;
             ((FrameworkElement)content.Children[0]).Height = ((FrameworkElement)content.Children[0]).Width;
+            ((FrameworkElement)content.Children[1]).Margin = new Thickness(0,(H.Height - bar.Height) / 64,0,0);
+            ((TextBlock)content.Children[1]).Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            if (bounds.Width > bounds.Height) ((TextBlock)content.Children[1]).FontSize = content.Width / 65;
+            else ((TextBlock)content.Children[1]).FontSize = ((TextBlock)content.Children[1]).Width / 20;
+            ((TextBlock)content.Children[2]).Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+            if (bounds.Width > bounds.Height) ((TextBlock)content.Children[2]).FontSize = content.Width / 65;
+            else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 20;
+
         };
         Helpers.Add(H, bar, 0, 0);
         Helpers.Add(H, content, 1, 0);

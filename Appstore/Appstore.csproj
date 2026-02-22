@@ -15,7 +15,7 @@
         <!-- Package Publisher -->
         <ApplicationPublisher>alipr_1j0dfgh</ApplicationPublisher>
         <!-- Package Description -->
-        <Description>Appstore powered by Uno Platform.</Description>
+        <Description>Appstore, an appstore for great apps</Description>
 
         <!--
       UnoFeatures are used to quickly add and manage features enabled for your app.
@@ -35,7 +35,7 @@
         </UnoFeatures>
     </PropertyGroup>
     <ItemGroup>
-        <None Remove="ReadMe.md" />
+        <None Remove="README.md" />
     </ItemGroup>
 
 </Project>

@@ -16,7 +16,7 @@
         <ApplicationPublisher>Christopher Aliprantis</ApplicationPublisher>
         <!-- Package Description -->
         <Description>Appstore, an appstore for great apps</Description>
-
+        <UnoResizetizerIsWorkerPoolEnabled>false</UnoResizetizerIsWorkerPoolEnabled>
         <!--
       UnoFeatures are used to quickly add and manage features enabled for your app.
       https://aka.platform.uno/singleproject-features
@@ -43,8 +43,8 @@
       <UnoIcon Include="Assets\Icons\icon_foreground.svg" />
     </ItemGroup>
     <ItemGroup>
-      <UnoImage Include="Assets\matrixlogo.svg" Resize="false" />
-      <UnoImage Include="Assets\todologo.svg" Resize="false" />
+      <Content Include="Assets\matrixlogo.svg" Resize="false" />
+      <Content Include="Assets\todologo.svg" Resize="false" />
     </ItemGroup>
 
 

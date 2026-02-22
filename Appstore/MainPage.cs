@@ -69,6 +69,7 @@ public sealed partial class MainPage : Page
         };
         var ccontent = new StackPanel
         {
+            Spacing = 0,
             Children =
             {
                 new DDsendBut

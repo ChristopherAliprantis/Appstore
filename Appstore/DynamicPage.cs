@@ -184,9 +184,9 @@ public sealed partial class DynamicPage : Page
                 VerticalAlignment = VerticalAlignment.Top;
                 HorizontalAlignment = HorizontalAlignment.Left;
                 if (bounds.Width > bounds.Height)
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[0]).FontSize;
+                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[0]).FontSize / 10;
                 else
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[0]).FontSize;
+                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[0]).FontSize / 10;
             }
         };
         Helpers.Add(H, bar, 0, 0);

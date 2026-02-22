@@ -73,7 +73,7 @@ public sealed partial class MainPage : Page
             {
                 new DDsendBut
                 {
-                    imp = "ms-appx:///Assets/todologo.svg",
+                    imp = "ms-appx:///Assets/todologo.png",
                     des = "ToDo, your ultimate time management app",
                     nm = "ToDo",
                     Content = "ToDo",
@@ -85,7 +85,7 @@ public sealed partial class MainPage : Page
                 },
                 new DDsendBut
                 {
-                    imp = "ms-appx:///Assets/matrixlogo.svg",
+                    imp = "ms-appx:///Assets/matrixlogo.png",
                     des = "Simple Matix library for C#",
                     nm = "Matrix",
                     Content = "Matrix",

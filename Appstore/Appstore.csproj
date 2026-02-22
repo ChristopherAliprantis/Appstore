@@ -1,42 +1,41 @@
 ﻿<Project Sdk="Uno.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net10.0-browserwasm</TargetFrameworks>
+
         <OutputType>Exe</OutputType>
         <UnoSingleProject>true</UnoSingleProject>
 
-        <!-- IDENTITY -->
+        <!-- Display name -->
         <ApplicationTitle>Appstore</ApplicationTitle>
+        <!-- App Identifier -->
         <ApplicationId>com.companyname.Appstore</ApplicationId>
+        <!-- Versions -->
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
-        <ApplicationPublisher>Christopher Aliprantis</ApplicationPublisher>
-        <Description>Appstore, an appstore for great apps</Description>
+        <!-- Package Publisher -->
+        <ApplicationPublisher>alipr_1j0dfgh</ApplicationPublisher>
+        <!-- Package Description -->
+        <Description>Appstore powered by Uno Platform.</Description>
 
-        <!-- FIX 1: KILL THE RESIZETIZER ENGINE GLOBALLY -->
-        <UnoSkipResizetizer>true</UnoSkipResizetizer>
-        <UnoResizetizerIsWorkerPoolEnabled>false</UnoResizetizerIsWorkerPoolEnabled>
-
+        <!--
+      UnoFeatures are used to quickly add and manage features enabled for your app.
+      https://aka.platform.uno/singleproject-features
+    -->
         <UnoFeatures>
-            CSharpMarkup;Lottie;Hosting;Toolkit;MVUX;Configuration;Http;Serialization;Localization;ThemeService;
+            CSharpMarkup;
+            Lottie;
+            Hosting;
+            Toolkit;
+            MVUX;
+            Configuration;
+            Http;
+            Serialization;
+            Localization;
+            ThemeService;
         </UnoFeatures>
     </PropertyGroup>
-
-    <!-- FIX 2: STRIP ALL ASSETS FROM THE SDK'S AUTOMATIC RESIZE LISTS -->
     <ItemGroup>
-        <!-- This removes them from the crashing SkiaSharp "ProcessImageResize" code path -->
-        <UnoImage Remove="Assets\**\*.svg" />
-        <UnoIcon Remove="Assets\**\*.svg" />
-        <UnoSplashScreen Remove="Assets\**\*.svg" />
-        <None Remove="Assets\**\*.svg" />
-
-        <!-- FIX 3: INCLUDE AS RAW CONTENT (Direct Copy, No Pixel Allocation) -->
-        <Content Include="Assets\**\*.svg" />
+        <None Remove="ReadMe.md" />
     </ItemGroup>
-
-    <!-- FIX 4: OVERRIDE THE TARGETS (The Nuclear Option) -->
-    <!-- Redefining these as 'empty' ensures the crashing code can NEVER execute -->
-    <Target Name="UnoResizetizeImages" BeforeTargets="CoreCompile" />
-    <Target Name="UnoResizetizeIcons" BeforeTargets="CoreCompile" />
-    <Target Name="UnoResizetizeSplashScreens" BeforeTargets="CoreCompile" />
 
 </Project>

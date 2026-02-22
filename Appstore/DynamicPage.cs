@@ -133,14 +133,15 @@ public sealed partial class DynamicPage : Page
             else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 23;
             for (int i = 3; i < content.Children.Count; i++)
             {
-                //((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 32, 0, 0);
-                ((HyperlinkButton)content.Children[i]).Width = bar.Width - bar.Width / 14 - Width / 34;
-                ((FrameworkElement)content.Children[i]).Height = ((HyperlinkButton)content.Children[i]).Width;
-
+                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 32, 0, 0);
+                ((HyperlinkButton)content.Children[i]).Width = ((FrameworkElement)content.Children[0]).Width;
+                ((FrameworkElement)content.Children[i]).Height = ((FrameworkElement)content.Children[0]).Width;
+                VerticalAlignment = VerticalAlignment.Top;
+                HorizontalAlignment = HorizontalAlignment.Left;
                 if (bounds.Width > bounds.Height)
-                    ((HyperlinkButton)content.Children[i]).FontSize = content.Width / 65;
+                    ((HyperlinkButton)content.Children[i]).FontSize = ((FrameworkElement)content.Children[0]).Width;
                 else
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((HyperlinkButton)content.Children[i]).Width / 20;
+                    ((HyperlinkButton)content.Children[i]).FontSize = ((FrameworkElement)content.Children[0]).Width;
             }
         };
         this.Loaded += (s, e) =>
@@ -177,14 +178,15 @@ public sealed partial class DynamicPage : Page
             else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 23;
             for (int i = 3; i < content.Children.Count; i++)
             {
-                //((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 32 , 0, 0);
-                ((HyperlinkButton)content.Children[i]).Width = bar.Width - bar.Width / 14 - Width / 34;
-                ((FrameworkElement)content.Children[i]).Height = ((HyperlinkButton)content.Children[i]).Width;
-
+                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 32, 0, 0);
+                ((HyperlinkButton)content.Children[i]).Width = ((FrameworkElement)content.Children[0]).Width;
+                ((FrameworkElement)content.Children[i]).Height = ((FrameworkElement)content.Children[0]).Width;
+                VerticalAlignment = VerticalAlignment.Top;
+                HorizontalAlignment = HorizontalAlignment.Left;
                 if (bounds.Width > bounds.Height)
-                    ((HyperlinkButton)content.Children[i]).FontSize = content.Width / 65;
+                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[0]).FontSize;
                 else
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((HyperlinkButton)content.Children[i]).Width / 20;
+                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[0]).FontSize;
             }
         };
         Helpers.Add(H, bar, 0, 0);

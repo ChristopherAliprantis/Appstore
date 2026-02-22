@@ -73,7 +73,7 @@ public sealed partial class MainPage : Page
             {
                 new DDsendBut
                 {
-                    imp = "ms-appx:///Assets/ToDologo.svg",
+                    imp = "ms-appx:///Assets/todologo.svg",
                     des = "ToDo, your ultimate time management app",
                     nm = "ToDo",
                     Content = "ToDo",
@@ -85,7 +85,7 @@ public sealed partial class MainPage : Page
                 },
                 new DDsendBut
                 {
-                    imp = "ms-appx:///Assets/Matrixlogo.svg",
+                    imp = "ms-appx:///Assets/matrixlogo.svg",
                     des = "Simple Matix library for C#",
                     nm = "Matrix",
                     Content = "Matrix",
@@ -125,6 +125,7 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
+
             for (int i = 0; i < ccontent.Children.Count; i++)
             {
                 if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 7;
@@ -132,6 +133,7 @@ public sealed partial class MainPage : Page
                 ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;
                 ((Button)ccontent.Children[i]).FontSize = ((FrameworkElement)ccontent.Children[i]).Height / 3.6;
             }
+            ccontent.Spacing = content.Height / 60;
         };
         this.Loaded += (s, e) =>
         {
@@ -162,6 +164,7 @@ public sealed partial class MainPage : Page
                 ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;
                 ((Button)ccontent.Children[i]).FontSize = ((FrameworkElement)ccontent.Children[i]).Height / 3.6;
             }
+            ccontent.Spacing = content.Height / 60;
         };
         Helpers.Add(H, bar, 0, 0);
         Helpers.Add(H, content, 1, 0);

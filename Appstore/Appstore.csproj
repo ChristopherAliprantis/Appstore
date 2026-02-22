@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk">
+﻿<Project Sdk="Uno.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net10.0-browserwasm</TargetFrameworks>
 
@@ -36,10 +36,17 @@
     </PropertyGroup>
     <ItemGroup>
       <None Remove="Assets\Icons\icon_foreground.svg" />
+      <None Remove="Assets\matrixlogo.svg" />
+      <None Remove="Assets\todologo.svg" />
     </ItemGroup>
     <ItemGroup>
       <UnoIcon Include="Assets\Icons\icon_foreground.svg" />
     </ItemGroup>
+    <ItemGroup>
+      <UnoImage Include="Assets\matrixlogo.svg" Resize="false" />
+      <UnoImage Include="Assets\todologo.svg" Resize="false" />
+    </ItemGroup>
+
 
 </Project>
 

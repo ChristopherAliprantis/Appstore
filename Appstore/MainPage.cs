@@ -82,6 +82,17 @@ public sealed partial class MainPage : Page
                         ("ToDo-winx64","ms-appx:///Assets/apps/ToDo-winx64.zip"),
                         ("ToDo-android","ms-appx:///Assets/apps/ToDo-android.zip")
                     },
+                },
+                new DDsendBut
+                {
+                    imp = "ms-appx:///Assets/Matrixlogo.svg",
+                    des = "Simple Matix library for C#",
+                    nm = "Matrix",
+                    Content = "Matrix",
+                    dl = new List<(string, string)>
+                    {
+                        ("Matrix-dll","ms-appx:///Assets/apps/Matrix-dll.zip"),
+                    },
                 }
             }
 
@@ -114,10 +125,13 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 7;
-            else ((FrameworkElement)ccontent.Children[0]).Width = bar.Width / 3.8;
-            ((FrameworkElement)ccontent.Children[0]).Height = ((FrameworkElement)ccontent.Children[0]).Width;
-            ((Button)ccontent.Children[0]).FontSize = ((FrameworkElement)ccontent.Children[0]).Height / 3.6;
+            for (int i = 0; i < ccontent.Children.Count; i++)
+            {
+                if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 7;
+                else ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 3.8;
+                ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;
+                ((Button)ccontent.Children[i]).FontSize = ((FrameworkElement)ccontent.Children[i]).Height / 3.6;
+            }
         };
         this.Loaded += (s, e) =>
         {
@@ -146,7 +160,7 @@ public sealed partial class MainPage : Page
                 if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 7;
                 else ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 3.8;
                 ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;
-                ((Button)ccontent.Children[0]).FontSize = ((FrameworkElement)ccontent.Children[i]).Height / 3.6;
+                ((Button)ccontent.Children[i]).FontSize = ((FrameworkElement)ccontent.Children[i]).Height / 3.6;
             }
         };
         Helpers.Add(H, bar, 0, 0);

@@ -6,5 +6,19 @@
   "short_name": "Appstore",
   "start_url": "/index.html",
   "theme_color": "#ffffff",
-  "scope": "/"
+  "scope": "/",
+  "icons": [
+    {
+      "src": "Assets/Icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "Assets/Icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
 }

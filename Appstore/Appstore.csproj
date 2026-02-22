@@ -43,8 +43,8 @@
       <UnoIcon Include="Assets\Icons\icon_foreground.svg" />
     </ItemGroup>
     <ItemGroup>
-      <UnoImage Include="Assets\matrixlogo.svg" Resize="false" />
-      <UnoImage Include="Assets\todologo.svg" Resize="false" />
+      <Content Include="Assets\matrixlogo.svg" Resize="false" />
+      <Content Include="Assets\todologo.svg" Resize="false" />
     </ItemGroup>
 
 

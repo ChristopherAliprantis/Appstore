@@ -16,7 +16,7 @@
         <ApplicationPublisher>alipr_1j0dfgh</ApplicationPublisher>
         <!-- Package Description -->
         <Description>Appstore, an appstore for great apps</Description>
-
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <!--
       UnoFeatures are used to quickly add and manage features enabled for your app.
       https://aka.platform.uno/singleproject-features

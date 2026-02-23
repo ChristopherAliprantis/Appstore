@@ -4,6 +4,8 @@ namespace Appstore;
 
 public sealed partial class MainPage : Page
 {
+    public static Windows.Foundation.Rect bounds;
+    public static TwoDimensionalStackPanel? apps;
     public MainPage()
     {
         var H = new Grid
@@ -67,46 +69,37 @@ public sealed partial class MainPage : Page
             App.rootFrame.Navigate(typeof(InfoPage));
             await Task.Delay(200);
         };
-        var ccontent = new StackPanel
+        new DDsendBut
         {
-            Spacing = 0,
-            Children =
+            imp = "ms-appx:///Assets/todologo.png",
+            des = "ToDo, your ultimate time management app",
+            nm = "ToDo",
+            Content = "ToDo",
+            dl = new List<(string, string)>
             {
-                new DDsendBut
-                {
-                    imp = "ms-appx:///Assets/todologo.png",
-                    des = "ToDo, your ultimate time management app",
-                    nm = "ToDo",
-                    Content = "ToDo",
-                    dl = new List<(string, string)>
-                    {
-                        ("ToDo-winx64","ms-appx:///Assets/apps/ToDo-winx64.zip"),
-                        ("ToDo-android","ms-appx:///Assets/apps/ToDo-android.zip")
-                    },
-                },
-                new DDsendBut
-                {
-                    imp = "ms-appx:///Assets/matrixlogo.png",
-                    des = "Simple Matix library for C#",
-                    nm = "Matrix",
-                    Content = "Matrix",
-                    dl = new List<(string, string)>
-                    {
-                        ("Matrix-dll","ms-appx:///Assets/apps/Matrix-dll.zip"),
-                    },
-                }
-            }
-
-
+                ("ToDo-winx64","ms-appx:///Assets/apps/ToDo-winx64.zip"),
+                ("ToDo-android","ms-appx:///Assets/apps/ToDo-android.zip")
+            },
+        };
+        new DDsendBut
+        {
+            imp = "ms-appx:///Assets/matrixlogo.png",
+            des = "Simple Matix library for C#",
+            nm = "Matrix",
+            Content = "Matrix",
+            dl = new List<(string, string)>
+            {
+                ("Matrix-dll","ms-appx:///Assets/apps/Matrix-dll.zip"),
+            },
         };
         var content = new ScrollViewer
         {
-            Content = ccontent
+            Content = apps
         };
         
         this.SizeChanged += (s, e) =>
         {
-            var bounds = App.MainWindow.Bounds;
+            bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
             bar.Height = this.ActualHeight / 17;
@@ -126,19 +119,25 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-
-            for (int i = 0; i < ccontent.Children.Count; i++)
+            apps.Spacing = content.Height / 60;
+            apps.col1.Spacing = content.Height / 60;
+            apps.col2.Spacing = content.Height / 60;
+            apps.col3.Spacing = content.Height / 60;
+            apps.col4.Spacing = content.Height / 60;
+            for (int i = 0; i < apps.Children.Count; i++)
             {
-                if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 7;
-                else ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 3.8;
-                ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;
-                ((Button)ccontent.Children[i]).FontSize = ((FrameworkElement)ccontent.Children[i]).Height / 3.6;
+                for (int j = 0; j < ((StackPanel)apps.Children[i]).Children.Count; j++)
+                {
+                    if (bounds.Width > bounds.Height) ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 7;
+                    else ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 3.8;
+                    ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width;
+                    ((Button)((StackPanel)apps.Children[i]).Children[j]).FontSize = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height / 3.6;
+                }
             }
-            ccontent.Spacing = content.Height / 60;
         };
         this.Loaded += (s, e) =>
         {
-            var bounds = App.MainWindow.Bounds;
+            bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
             bar.Height = this.ActualHeight / 17;
@@ -148,8 +147,8 @@ public sealed partial class MainPage : Page
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
             double pad = bar.Height / 12;
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad /4);
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad/4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad / 4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad / 4);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height = bar.Height - (pad / 2);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height = bar.Height - (pad / 2);
@@ -158,14 +157,21 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            for (int i = 0; i < ccontent.Children.Count; i++)
+            apps.Spacing = content.Height / 60;
+            apps.col1.Spacing = content.Height / 60;
+            apps.col2.Spacing = content.Height / 60;
+            apps.col3.Spacing = content.Height / 60;
+            apps.col4.Spacing = content.Height / 60;
+            for (int i = 0; i < apps.Children.Count; i++)
             {
-                if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 7;
-                else ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 3.8;
-                ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;
-                ((Button)ccontent.Children[i]).FontSize = ((FrameworkElement)ccontent.Children[i]).Height / 3.6;
+                for (int j = 0; j < ((StackPanel)apps.Children[i]).Children.Count; j++)
+                {
+                    if (bounds.Width > bounds.Height) ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 7;
+                    else ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 3.8;
+                    ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width;
+                    ((Button)((StackPanel)apps.Children[i]).Children[j]).FontSize = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height / 3.6;
+                }
             }
-            ccontent.Spacing = content.Height / 60;
         };
         Helpers.Add(H, bar, 0, 0);
         Helpers.Add(H, content, 1, 0);
@@ -203,7 +209,7 @@ public class TextButton : TextBlock
 
 public class DynamicDetails
 {
-    public static List<(string, string)>? downloadlinks; // (link name, link path)
+    public static List<(string, string)>? downloadlinks; // <(link name, link path)?
     public static string? impath;
     public static string? AppName;
     public static string? AppDescription;
@@ -213,7 +219,7 @@ public class DDsendBut : Button
 {
     public string? des;
     public string? imp;
-    public List<(string, string)>? dl; // <name, path>
+    public List<(string, string)>? dl; // <(name, path)>
     public string? nm;
     public DDsendBut()
     {

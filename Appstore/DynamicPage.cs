@@ -131,17 +131,14 @@ public sealed partial class DynamicPage : Page
             ((TextBlock)content.Children[2]).Width = bar.Width - bar.Width / 14 - bar.Width / 34;
             if (bounds.Width > bounds.Height) ((TextBlock)content.Children[2]).FontSize = content.Width / 72;
             else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 23;
-            for (int i = 3; i < content.Children.Count; i++)
+            for (int i = 3; i < content.Children.Count - 3; i++)
             {
-                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 32, 0, 0);
+                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 58, 0, 0);
                 ((HyperlinkButton)content.Children[i]).Width = ((FrameworkElement)content.Children[1]).Width;
                 ((FrameworkElement)content.Children[i]).Height = ((FrameworkElement)content.Children[1]).Width;
                 VerticalAlignment = VerticalAlignment.Top;
                 HorizontalAlignment = HorizontalAlignment.Left;
-                if (bounds.Width > bounds.Height)
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[1]).FontSize;
-                else
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[1]).FontSize;
+                ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[1]).FontSize;
             }
         };
         this.Loaded += (s, e) =>
@@ -176,21 +173,75 @@ public sealed partial class DynamicPage : Page
             ((TextBlock)content.Children[2]).Width = bar.Width - bar.Width / 14 - bar.Width / 34;
             if (bounds.Width > bounds.Height) ((TextBlock)content.Children[2]).FontSize = content.Width / 72;
             else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 23;
-            for (int i = 3; i < content.Children.Count; i++)
+            for (int i = 3; i < content.Children.Count - 3; i++)
             {
-                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 32, 0, 0);
+                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 58, 0, 0);
                 ((HyperlinkButton)content.Children[i]).Width = ((FrameworkElement)content.Children[1]).Width;
                 ((FrameworkElement)content.Children[i]).Height = ((FrameworkElement)content.Children[1]).Width;
                 VerticalAlignment = VerticalAlignment.Top;
                 HorizontalAlignment = HorizontalAlignment.Left;
-                if (bounds.Width > bounds.Height)
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[1]).FontSize;
-                else
-                    ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[1]).FontSize;
+                ((HyperlinkButton)content.Children[i]).FontSize = ((TextBlock)content.Children[1]).FontSize;
             }
         };
         Helpers.Add(H, bar, 0, 0);
         Helpers.Add(H, content, 1, 0);
     }
 
+}
+public partial class TwoDimensionalStackPanel : StackPanel
+{
+    public StackPanel col1 = new StackPanel();
+    public StackPanel col2 = new StackPanel();
+    public StackPanel col3 = new StackPanel();
+    public StackPanel col4 = new StackPanel();
+    public int currentcol = 1;
+    public TwoDimensionalStackPanel()
+    {
+        Orientation = Orientation.Horizontal;
+        Children.Add(col1);
+        Children.Add(col2);
+        Children.Add(col3);
+        Children.Add(col4);
+
+    }
+    public void Add(FrameworkElement? thing)
+    {
+        if (thing == null)
+        {
+            return;
+        }
+        if (currentcol == 4)
+        {
+            currentcol = 0;
+        }
+        if (MainPage.bounds.Width > MainPage.bounds.Height)
+        {
+            currentcol++;
+        }
+        if (currentcol == 1)
+        {
+            MainPage.apps.col1.Children.Add(thing);
+        }
+        else if (currentcol == 2)
+        {
+            MainPage.apps.col2.Children.Add(thing);
+        }
+        else if (currentcol == 3)
+        {
+            MainPage.apps.col3.Children.Add(thing);
+        }
+        else if (currentcol == 4)
+        {
+            MainPage.apps.col4.Children.Add(thing);
+        }
+    }
+
+    public void Clear()
+    {
+        currentcol = 0;
+        col1.Children.Clear();
+        col2.Children.Clear();
+        col3.Children.Clear();
+        col4.Children.Clear();
+    }
 }

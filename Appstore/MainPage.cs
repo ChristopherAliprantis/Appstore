@@ -69,7 +69,7 @@ public sealed partial class MainPage : Page
             App.rootFrame.Navigate(typeof(InfoPage));
             await Task.Delay(200);
         };
-        new DDsendBut
+        var ToDo = new DDsendBut
         {
             imp = "ms-appx:///Assets/todologo.png",
             des = "ToDo, your ultimate time management app",
@@ -81,7 +81,7 @@ public sealed partial class MainPage : Page
                 ("ToDo-android","ms-appx:///Assets/apps/ToDo-android.zip")
             },
         };
-        new DDsendBut
+        var Matrix = new DDsendBut
         {
             imp = "ms-appx:///Assets/matrixlogo.png",
             des = "Simple Matix library for C#",
@@ -99,6 +99,17 @@ public sealed partial class MainPage : Page
         
         this.SizeChanged += (s, e) =>
         {
+            apps.Clear();
+            apps.Add(Matrix);
+            apps.Add(ToDo);
+            if (bounds.Width > bounds.Height)
+            {
+                apps.currentcol = 0;
+            }
+            else
+            {
+                apps.currentcol = 1;
+            }
             bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
@@ -126,17 +137,30 @@ public sealed partial class MainPage : Page
             apps.col4.Spacing = content.Height / 60;
             for (int i = 0; i < apps.Children.Count; i++)
             {
+                int I = i;
+                if ((bounds.Width > bounds.Height) == false) I = 1;
                 for (int j = 0; j < ((StackPanel)apps.Children[i]).Children.Count; j++)
                 {
-                    if (bounds.Width > bounds.Height) ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 7;
-                    else ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 3.8;
-                    ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width;
-                    ((Button)((StackPanel)apps.Children[i]).Children[j]).FontSize = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height / 3.6;
+                    if (bounds.Width > bounds.Height) ((FrameworkElement)((StackPanel)apps.Children[I]).Children[j]).Width = bar.Width / 7;
+                    else ((FrameworkElement)((StackPanel)apps.Children[I]).Children[j]).Width = bar.Width / 3.8;
+                    ((FrameworkElement)((StackPanel)apps.Children[I]).Children[j]).Height = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width;
+                    ((Button)((StackPanel)apps.Children[I]).Children[j]).FontSize = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height / 3.6;
                 }
             }
         };
         this.Loaded += (s, e) =>
         {
+            apps.Clear();
+            apps.Add(Matrix);
+            apps.Add(ToDo);
+            if (bounds.Width > bounds.Height)
+            {
+                apps.currentcol = 0;
+            }
+            else
+            {
+                apps.currentcol = 1;
+            }
             bounds = App.MainWindow.Bounds;
             H.Width = this.ActualWidth;
             H.Height = this.ActualHeight;
@@ -164,12 +188,14 @@ public sealed partial class MainPage : Page
             apps.col4.Spacing = content.Height / 60;
             for (int i = 0; i < apps.Children.Count; i++)
             {
+                int I = i;
+                if ((bounds.Width > bounds.Height) == false) I = 1;
                 for (int j = 0; j < ((StackPanel)apps.Children[i]).Children.Count; j++)
                 {
-                    if (bounds.Width > bounds.Height) ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 7;
-                    else ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width = bar.Width / 3.8;
-                    ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width;
-                    ((Button)((StackPanel)apps.Children[i]).Children[j]).FontSize = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height / 3.6;
+                    if (bounds.Width > bounds.Height) ((FrameworkElement)((StackPanel)apps.Children[I]).Children[j]).Width = bar.Width / 7;
+                    else ((FrameworkElement)((StackPanel)apps.Children[I]).Children[j]).Width = bar.Width / 3.8;
+                    ((FrameworkElement)((StackPanel)apps.Children[I]).Children[j]).Height = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Width;
+                    ((Button)((StackPanel)apps.Children[I]).Children[j]).FontSize = ((FrameworkElement)((StackPanel)apps.Children[i]).Children[j]).Height / 3.6;
                 }
             }
         };

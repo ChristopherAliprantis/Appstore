@@ -83,6 +83,7 @@ public sealed partial class MainPage : Page
                         ("ToDo-winx64","ms-appx:///Assets/apps/ToDo-winx64.zip"),
                         ("ToDo-android","ms-appx:///Assets/apps/ToDo-android.zip")
                     },
+                    CornerRadius = new CornerRadius(12),
                 },
                 new DDsendBut
                 {
@@ -94,6 +95,7 @@ public sealed partial class MainPage : Page
                     {
                         ("Matrix-dll","ms-appx:///Assets/apps/Matrix-dll.zip"),
                     },
+                    CornerRadius = new CornerRadius(12),
                 }
 
             }

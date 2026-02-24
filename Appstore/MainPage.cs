@@ -70,7 +70,6 @@ public sealed partial class MainPage : Page
         };
         var ccontent = new StackPanel
         {
-            Spacing = 0,
             Children =
             {
                 new DDsendBut
@@ -128,10 +127,13 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            ccontent.Spacing = content.Height / 60;
+            content.Height = (H.Height - bar.Height);
+            ccontent.Height = content.Height; 
+            ccontent.Width = content.Width;
+            ccontent.Spacing = content.Height / 63;
             for (int i = 0; i < ccontent.Children.Count; i++)
             {
-                if (i > 0) ((FrameworkElement)ccontent.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 1, 0, 0);
+                //if (i > 0) ((FrameworkElement)ccontent.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 1, 0, 0);
                 if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 7;
                 else ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 3.8;
                 ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;
@@ -150,8 +152,8 @@ public sealed partial class MainPage : Page
             ((Rectangle)bar.Children[1]).Width = bar.Width;
             ((StackPanel)bar.Children[0]).Width = bar.Width;
             double pad = bar.Height / 12;
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad /4);
-            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad/4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Margin = new Thickness(bar.Width / 20.833, 0, 0, pad / 4);
+            ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Margin = new Thickness(bar.Width / 31.25, 0, 0, pad / 4);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Height = bar.Height - (pad / 2);
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[1]).Width = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height * 3;
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height = bar.Height - (pad / 2);
@@ -160,10 +162,13 @@ public sealed partial class MainPage : Page
             ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).FontSize = ((TextButton)((StackPanel)((StackPanel)bar).Children[0]).Children[0]).Height / 1.6;
             content.Margin = new Thickness(bar.Width / 14, bar.Height / 9, 0, 0);
             content.Width = bar.Width - bar.Width / 14 - bar.Width / 34;
-            ccontent.Spacing = content.Height / 60;
+            content.Height = (H.Height - bar.Height);
+            ccontent.Height = content.Height;
+            ccontent.Width = content.Width;
+            ccontent.Spacing = content.Height / 63;
             for (int i = 0; i < ccontent.Children.Count; i++)
             {
-                if (i > 0)((FrameworkElement)ccontent.Children[i]).Margin = new Thickness(0,(H.Height - bar.Height) / 30,0,0);
+                //if (i > 0) ((FrameworkElement)ccontent.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 1, 0, 0);
                 if (bounds.Width > bounds.Height) ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 7;
                 else ((FrameworkElement)ccontent.Children[i]).Width = bar.Width / 3.8;
                 ((FrameworkElement)ccontent.Children[i]).Height = ((FrameworkElement)ccontent.Children[i]).Width;

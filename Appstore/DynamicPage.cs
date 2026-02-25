@@ -133,7 +133,7 @@ public sealed partial class DynamicPage : Page
             else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 23;
             for (int i = 3; i < content.Children.Count - 3; i++)
             {
-                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 58, 0, 0);
+                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 46, 0, 0);
                 ((HyperlinkButton)content.Children[i]).Width = ((FrameworkElement)content.Children[1]).Width;
                 ((FrameworkElement)content.Children[i]).Height = ((FrameworkElement)content.Children[1]).Width;
                 VerticalAlignment = VerticalAlignment.Top;
@@ -175,7 +175,7 @@ public sealed partial class DynamicPage : Page
             else ((TextBlock)content.Children[2]).FontSize = ((TextBlock)content.Children[2]).Width / 23;
             for (int i = 3; i < content.Children.Count - 3; i++)
             {
-                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 58, 0, 0);
+                ((FrameworkElement)content.Children[i]).Margin = new Thickness(0, (H.Height - bar.Height) / 46, 0, 0);
                 ((HyperlinkButton)content.Children[i]).Width = ((FrameworkElement)content.Children[1]).Width;
                 ((FrameworkElement)content.Children[i]).Height = ((FrameworkElement)content.Children[1]).Width;
                 VerticalAlignment = VerticalAlignment.Top;

@@ -35,10 +35,10 @@
         </UnoFeatures>
     </PropertyGroup>
     <ItemGroup>
-        <None Remove="Assets\Icons\icon_foreground.svg" />
+        <None Remove="Assets\Icons\icon.svg" />
         <None Remove="README.md" />
     </ItemGroup>
     <ItemGroup>
-      <UnoIcon Include="Assets\Icons\icon_foreground.svg" />
+      <UnoIcon Include="Assets\Icons\icon.svg" />
     </ItemGroup>
 </Project>

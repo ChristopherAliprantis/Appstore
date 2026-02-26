@@ -674,6 +674,7 @@
     </ItemGroup>
     <ItemGroup>
         <None Remove="Assets\Icons\icon.svg" />
+        <None Remove="Assets\Icons\Splash\splash_screen.svg" />
         <None Remove="README.md" />
     </ItemGroup>
     <ItemGroup>
@@ -1316,6 +1317,9 @@
     </ItemGroup>
     <ItemGroup>
       <UnoIcon Include="Assets\Icons\icon.svg" />
+    </ItemGroup>
+    <ItemGroup>
+      <UnoSplashScreen Include="Assets\Icons\Splash\splash_screen.svg" />
     </ItemGroup>
     <ItemGroup>
       <Content Update="wwwroot\package_18535fcad5c17609c8860bb6bb9b0fe33d495424\Assets\matrixlogo.png">

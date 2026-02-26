@@ -244,7 +244,7 @@ public class HL : HyperlinkButton
     public HL()
     {
         this.Foreground = new SolidColorBrush(Colors.Blue);
-        this.Click += async (s, e) =>
+        this.Click += async(s, e) =>
         {
             if (string.IsNullOrEmpty(path)) return;
 
@@ -252,11 +252,11 @@ public class HL : HyperlinkButton
             {
                 var savePicker = new FileSavePicker();
                 savePicker.SuggestedStartLocation = PickerLocationId.Downloads;
-                string ext = System.IO.Path.GetExtension(path) ?? ".bin";
-                if (string.IsNullOrEmpty(ext)) ext = ".bin";
+                string ext = System.IO.Path.GetExtension(path) ?? ".zip";
+                if (string.IsNullOrEmpty(ext)) ext = ".zip";
 
                 savePicker.FileTypeChoices.Add("File", new List<string>() { ext });
-                savePicker.SuggestedFileName = System.IO.Path.GetFileNameWithoutExtension(path) ?? "download";
+                savePicker.SuggestedFileName = System.IO.Path.GetFileNameWithoutExtension(path) ?? $"{this.Content}.zip";
                 StorageFile file = await savePicker.PickSaveFileAsync();
 
                 if (file != null)

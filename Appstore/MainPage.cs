@@ -1,4 +1,6 @@
 using Windows.Storage.Pickers;
+using Windows.Storage.Provider;
+using Windows.Storage.Streams;
 
 namespace Appstore;
 
@@ -244,7 +246,7 @@ public class HL : HyperlinkButton
     public HL()
     {
         this.Foreground = new SolidColorBrush(Colors.Blue);
-        this.Click += async(s, e) =>
+        this.Click += async (s, e) =>
         {
             if (string.IsNullOrEmpty(path)) return;
 
@@ -252,29 +254,49 @@ public class HL : HyperlinkButton
             {
                 var savePicker = new FileSavePicker();
                 savePicker.SuggestedStartLocation = PickerLocationId.Downloads;
-                string ext = System.IO.Path.GetExtension(path) ?? ".zip";
+
+                string ext = System.IO.Path.GetExtension(path);
                 if (string.IsNullOrEmpty(ext)) ext = ".zip";
 
                 savePicker.FileTypeChoices.Add("File", new List<string>() { ext });
-                savePicker.SuggestedFileName = System.IO.Path.GetFileNameWithoutExtension(path) ?? $"{this.Content}.zip";
+                savePicker.SuggestedFileName = System.IO.Path.GetFileNameWithoutExtension(path) ?? "download";
+
                 StorageFile file = await savePicker.PickSaveFileAsync();
 
                 if (file != null)
                 {
                     CachedFileManager.DeferUpdates(file);
-                    using (var client = new HttpClient())
+
+                    if (path.StartsWith("ms-appx", StringComparison.OrdinalIgnoreCase))
                     {
-                        var bytes = await client.GetByteArrayAsync(path);
-                        await FileIO.WriteBytesAsync(file, bytes);
+                        var sourceFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri(path));
+                        var buffer = await FileIO.ReadBufferAsync(sourceFile);
+                        await FileIO.WriteBufferAsync(file, buffer);
                     }
-                    await CachedFileManager.CompleteUpdatesAsync(file);
+                    else
+                    {
+                        using (var client = new HttpClient())
+                        {
+                            var bytes = await client.GetByteArrayAsync(path);
+                            await FileIO.WriteBytesAsync(file, bytes);
+                        }
+                    }
+
+                    var status = await CachedFileManager.CompleteUpdatesAsync(file);
+
+                    if (status != FileUpdateStatus.Complete)
+                    {
+                        Console.WriteLine($"Download failed: {status}");
+                        return;
+                    }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return;
+                Console.WriteLine($"Download failed: {ex.Message}");
             }
         };
+
         this.PointerEntered += (s, e) =>
         {
             this.Foreground = new SolidColorBrush(Colors.Blue);

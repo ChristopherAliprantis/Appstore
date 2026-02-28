@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <base href="/Appstore">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <base href="/Appstore/">
+    <script type="text/javascript" src="/package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/require.js"></script>
+    <script type="module" src="/package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/normalize.css" />
+<link rel="stylesheet" type="text/css" href="/package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Uno.UI.css" />
+<link rel="stylesheet" type="text/css" href="/package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Fonts.css" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff" />
 
-    <!-- Use standard text/javascript for these -->
-    <script type="text/javascript" src="/package_f5de4f993d3ccdc456d6e2fa9f900929dce10d08/require.js"></script>
-
-    <!-- IMPORTANT: Remove 'type="module"' here -->
-    <script type="text/javascript" src="/package_f5de4f993d3ccdc456d6e2fa9f900929dce10d08/uno-bootstrap.js"></script>
-
-    <!-- Ensure CSS paths match the package folder -->
-    <link rel="stylesheet" type="text/css" href="/package_f5de4f993d3ccdc456d6e2fa9f900929dce10d08/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/package_f5de4f993d3ccdc456d6e2fa9f900929dce10d08/uno-bootstrap.css" />
 </head>
-
 <body>
     <div id="uno-body" class="container-fluid uno-body">
         <div class="uno-loader"
@@ -23,9 +23,9 @@
              loading-alert="none">
 
             <!-- Logo: change src to customize the logo -->
-            <!-- <img class="logo"
+            <img class="logo"
                  src=""
-                 title="Uno is loading your application" /> -->
+                 title="Uno is loading your application" />
 
             <progress></progress>
             <span class="alert"></span>

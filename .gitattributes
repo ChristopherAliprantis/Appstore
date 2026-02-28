@@ -59,4 +59,4 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
-Appstore/publish/* linguist-vendored
+Appstore/pub/* linguist-vendored

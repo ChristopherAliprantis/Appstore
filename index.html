@@ -9,23 +9,24 @@
     <script type="module" src="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.js"></script>
     <script>
         (function () {
-            const base = document.querySelector('base').href;
-            const repoName = new URL(base).pathname; // e.g., "/YourRepoName/"
+            // 1. Get the actual base path (works for /YourRepo/ or /)
+            const baseElement = document.querySelector('base');
+            const base = baseElement ? new URL(baseElement.href).pathname : '/';
 
-            // 1. Rewrite Fetch globally
+            // 2. Intercept Global Fetch (for awaits/api calls)
             const originalFetch = window.fetch;
             window.fetch = function (input, init) {
-                if (typeof input === 'string' && input.startsWith('/') && !input.startsWith(repoName)) {
-                    input = repoName + input.substring(1);
+                if (typeof input === 'string' && input.startsWith('/') && !input.startsWith(base)) {
+                    input = base + input.substring(1);
                 }
                 return originalFetch(input, init);
             };
 
-            // 2. Rewrite XMLHttpRequest (for older libraries)
+            // 3. Intercept Uno/RequireJS dynamic script loading
             const originalOpen = XMLHttpRequest.prototype.open;
             XMLHttpRequest.prototype.open = function (method, url) {
-                if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(repoName)) {
-                    url = repoName + url.substring(1);
+                if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(base)) {
+                    url = base + url.substring(1);
                 }
                 return originalOpen.apply(this, arguments);
             };

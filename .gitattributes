@@ -58,4 +58,3 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 Appstore/pub/* linguist-vendored
-*.zip filter=lfs diff=lfs merge=lfs -text

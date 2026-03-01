@@ -1,4 +1,4 @@
-﻿import { config as unoConfig } from "/package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-config.js";
+import { config as unoConfig } from "package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-config.js";
 
 if (unoConfig.environmentVariables["UNO_BOOTSTRAP_DEBUGGER_ENABLED"] !== "True") {
     console.debug("[ServiceWorker] Initializing");
@@ -36,7 +36,7 @@ if (unoConfig.environmentVariables["UNO_BOOTSTRAP_DEBUGGER_ENABLED"] !== "True")
                     // Replace dynamic import with fetch and eval for web worker compatibility
                     // In .NET 10+, dotnet.boot.js was merged with dotnet.js for performance
                     // Use the fingerprinted filename from config for proper caching
-                    const response = await fetch(`/_framework/${unoConfig.dotnet_js_filename}`);
+                    const response = await fetch(`_framework/${unoConfig.dotnet_js_filename}`);
                     if (!response.ok) {
                         throw new Error(`Failed to fetch ${unoConfig.dotnet_js_filename}: ${response.status} ${response.statusText}`);
                     }

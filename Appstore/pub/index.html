@@ -7,13 +7,37 @@
     <base href="/Appstore/">
     <script type="text/javascript" src="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/require.js"></script>
     <script type="module" src="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.js"></script>
+    <script>
+        (function () {
+            const base = document.querySelector('base').href;
+            const repoName = new URL(base).pathname; // e.g., "/YourRepoName/"
+
+            // 1. Rewrite Fetch globally
+            const originalFetch = window.fetch;
+            window.fetch = function (input, init) {
+                if (typeof input === 'string' && input.startsWith('/') && !input.startsWith(repoName)) {
+                    input = repoName + input.substring(1);
+                }
+                return originalFetch(input, init);
+            };
+
+            // 2. Rewrite XMLHttpRequest (for older libraries)
+            const originalOpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function (method, url) {
+                if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(repoName)) {
+                    url = repoName + url.substring(1);
+                }
+                return originalOpen.apply(this, arguments);
+            };
+        })();
+    </script>
     <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/normalize.css" />
-<link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Uno.UI.css" />
-<link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Fonts.css" />
+    <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Uno.UI.css" />
+    <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Fonts.css" />
     <link rel="manifest" href="manifest.webmanifest" />
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#ffffff" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ffffff" />
 
 </head>
 <body>

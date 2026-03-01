@@ -3,44 +3,51 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <base href="/Appstore/">
-    <script type="text/javascript" src="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/require.js"></script>
-    <script type="module" src="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.js"></script>
-    <script>
-        (function () {
-            // 1. Get the actual base path (works for /YourRepo/ or /)
-            const baseElement = document.querySelector('base');
-            const base = baseElement ? new URL(baseElement.href).pathname : '/';
 
-            // 2. Intercept Global Fetch (for awaits/api calls)
+    <script>
+        // MASTER FIX: Run this BEFORE any other scripts load
+        (function () {
+            const isGitHub = window.location.hostname.includes('github.io');
+            // Use "/Appstore/" for GitHub, and "/" for local debugging
+            const currentBase = isGitHub ? '/Appstore/' : '/';
+
+            // 1. PRE-CONFIGURE RequireJS (This fixes the 404s for AppManifest.js)
+            window.require = {
+                baseUrl: currentBase
+            };
+
+            // 2. INTERCEPT Global Fetch (Fixes your awaits/API calls)
             const originalFetch = window.fetch;
             window.fetch = function (input, init) {
-                if (typeof input === 'string' && input.startsWith('/') && !input.startsWith(base)) {
-                    input = base + input.substring(1);
+                if (typeof input === 'string' && input.startsWith('/') && !input.startsWith(currentBase)) {
+                    input = currentBase + input.substring(1);
                 }
                 return originalFetch(input, init);
             };
 
-            // 3. Intercept Uno/RequireJS dynamic script loading
+            // 3. INTERCEPT XHR (Fixes internal Uno loading)
             const originalOpen = XMLHttpRequest.prototype.open;
             XMLHttpRequest.prototype.open = function (method, url) {
-                if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(base)) {
+                if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(currentBase)) {
                     url = base + url.substring(1);
                 }
                 return originalOpen.apply(this, arguments);
             };
         })();
     </script>
+
+    <!-- Now load the scripts using relative paths (no leading slash) -->
+    <script type="text/javascript" src="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/require.js"></script>
+    <script type="module" src="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.js"></script>
+
     <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/normalize.css" />
     <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Uno.UI.css" />
     <link rel="stylesheet" type="text/css" href="package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/Fonts.css" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#ffffff" />
-
 </head>
+
 <body>
     <div id="uno-body" class="container-fluid uno-body">
         <div class="uno-loader"

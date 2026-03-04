@@ -4,9 +4,9 @@
   "display": "standalone",
   "name": "Appstore",
   "short_name": "Appstore",
-  "start_url": "index.html",
+  "start_url": "/Appstore/",
   "theme_color": "#ffffff",
-  "scope": "/",
+  "scope": "/Appstore/",
   "icons": [
     {
       "src": "package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/icon-16.png",

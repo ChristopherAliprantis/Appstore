@@ -140,7 +140,7 @@ var Uno;
                                 bootstrapper?.preInit();
                             });
                         }
-                        var config = await import('uno-config.js');
+                        var config = await import('package_00717c1a0046ee55988f856c1e720029e2c6cdfd/uno-config.js');
                         if (document && document.uno_app_base_override) {
                             config.config.uno_app_base = document.uno_app_base_override;
                         }

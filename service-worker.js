@@ -1,4 +1,4 @@
-import { config as unoConfig } from "package_b6e2251ab3acc78e850f6f5fc2261afa3bff6ab7/uno-config.js";
+import { config as unoConfig } from "package_00717c1a0046ee55988f856c1e720029e2c6cdfd/uno-config.js";
 
 if (unoConfig.environmentVariables["UNO_BOOTSTRAP_DEBUGGER_ENABLED"] !== "True") {
     console.debug("[ServiceWorker] Initializing");
@@ -10,7 +10,7 @@ if (unoConfig.environmentVariables["UNO_BOOTSTRAP_DEBUGGER_ENABLED"] !== "True")
     self.addEventListener('install', function (e) {
         console.debug('[ServiceWorker] Installing offline worker');
         e.waitUntil(
-            caches.open('223479f1-b739-432c-b20e-27565f2737a5').then(async function (cache) {
+            caches.open('1df9377a-4163-4e05-8588-6deaf7eb06b3').then(async function (cache) {
                 console.debug('[ServiceWorker] Caching app binaries and content');
 
                 // Add files one by one to avoid failed downloads to prevent the
@@ -36,7 +36,7 @@ if (unoConfig.environmentVariables["UNO_BOOTSTRAP_DEBUGGER_ENABLED"] !== "True")
                     // Replace dynamic import with fetch and eval for web worker compatibility
                     // In .NET 10+, dotnet.boot.js was merged with dotnet.js for performance
                     // Use the fingerprinted filename from config for proper caching
-                    const response = await fetch(`_framework/${unoConfig.dotnet_js_filename}`);
+                    const response = await fetch(`/_framework/${unoConfig.dotnet_js_filename}`);
                     if (!response.ok) {
                         throw new Error(`Failed to fetch ${unoConfig.dotnet_js_filename}: ${response.status} ${response.statusText}`);
                     }
@@ -98,7 +98,7 @@ if (unoConfig.environmentVariables["UNO_BOOTSTRAP_DEBUGGER_ENABLED"] !== "True")
             caches.keys().then(function (cacheNames) {
                 return Promise.all(
                     cacheNames.filter(function (cacheName) {
-                        return cacheName !== '223479f1-b739-432c-b20e-27565f2737a5';
+                        return cacheName !== '1df9377a-4163-4e05-8588-6deaf7eb06b3';
                     }).map(function (cacheName) {
                         console.debug('[ServiceWorker] Deleting old cache:', cacheName);
                         return caches.delete(cacheName);

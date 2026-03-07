@@ -81,7 +81,7 @@ var Uno;
                             applyExisting: async function () {
                                 if (browserToolsVariable == "true") {
                                     try {
-                                        var m = await import(`/_framework/blazor-hotreload.js`);
+                                        var m = await import(`_framework/blazor-hotreload.js`);
                                         await m.receiveHotReloadAsync();
                                     }
                                     catch (e) {
@@ -140,7 +140,7 @@ var Uno;
                                 bootstrapper?.preInit();
                             });
                         }
-                        var config = await import('./uno-config.js');
+                        var config = await import('uno-config.js');
                         if (document && document.uno_app_base_override) {
                             config.config.uno_app_base = document.uno_app_base_override;
                         }
@@ -148,7 +148,7 @@ var Uno;
                         if (DOMContentLoaded) {
                             bootstrapper.preInit();
                         }
-                        var m = await import(`../_framework/${config.config.dotnet_js_filename}`);
+                        var m = await import(`_framework/${config.config.dotnet_js_filename}`);
                         m.dotnet
                             .withModuleConfig({
                             preRun: () => bootstrapper.wasmRuntimePreRun(),

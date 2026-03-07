@@ -1,5 +1,5 @@
 var UnoAppManifest = {
     displayName: "Appstore",
-    splashScreenImage: "splash_screen.scale-200.png",
+    splashScreenImage: "Assets/splash_screen.scale-200.png",
     splashScreenColor: "#ffffff",
 }

@@ -1,4 +1,4 @@
-﻿import { config as unoConfig } from "/package_6df07e67cf99d31b1174e96a52f60237112275be/uno-config.js";
+import { config as unoConfig } from "package_6df07e67cf99d31b1174e96a52f60237112275be/uno-config.js";
 
 if (unoConfig.environmentVariables["UNO_BOOTSTRAP_DEBUGGER_ENABLED"] !== "True") {
     console.debug("[ServiceWorker] Initializing");

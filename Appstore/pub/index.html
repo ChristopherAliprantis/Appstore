@@ -5,55 +5,55 @@
     <script>
     // 2. THE MASTER INTERCEPTOR: Aliases "/" to "/Appstore/" globally
     (function () {
-        const isGitHub = window.location.hostname.includes('github.io');
-        const repoPath = '/Appstore'; // No trailing slash here
+    const isGitHub = window.location.hostname.includes('github.io');
+    const repoPath = '/Appstore'; // No trailing slash here
 
-        if (isGitHub) {
-            // Fix for RequireJS (Uno's loader)
-            window.require = { baseUrl: '/Appstore/' };
+    if (isGitHub) {
+        // Fix for RequireJS (Uno's loader)
+        window.require = { baseUrl: '/Appstore/' };
 
-            // Fix for Dynamic Script Tags (Stops 404s on AppManifest.js, Uno.Wasm.js, etc.)
-            const orgCreate = document.createElement;
-            document.createElement = function (tag) {
-                const el = orgCreate.call(document, tag);
-                if (tag.toLowerCase() === 'script') {
-                    const descriptor = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
-                    Object.defineProperty(el, 'src', {
-                        set: function (val) {
-                            if (val.startsWith('/') && !val.startsWith(repoPath)) {
-                                val = repoPath + val;
-                            }
-                            descriptor.set.call(this, val);
-                        },
-                        get: function () { return descriptor.get.call(this); }
-                    });
-                }
-                return el;
-            };
+        // Fix for Dynamic Script Tags (Stops 404s on AppManifest.js, Uno.Wasm.js, etc.)
+        const orgCreate = document.createElement;
+        document.createElement = function (tag) {
+            const el = orgCreate.call(document, tag);
+            if (tag.toLowerCase() === 'script') {
+                const descriptor = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
+                Object.defineProperty(el, 'src', {
+                    set: function (val) {
+                        if (val.startsWith('/') && !val.startsWith(repoPath)) {
+                            val = repoPath + val;
+                        }
+                        descriptor.set.call(this, val);
+                    },
+                    get: function () { return descriptor.get.call(this); }
+                });
+            }
+            return el;
+        };
 
-            // Fix for Fetch (Stops 404s on .wasm and .dotnet binary files)
-            const orgFetch = window.fetch;
-            window.fetch = function (url, options) {
-                if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(repoPath)) {
-                    url = repoPath + url;
-                }
-                return orgFetch(url, options);
-            };
-        }
-    })();
-    </script>
+        // Fix for Fetch (Stops 404s on .wasm and .dotnet binary files)
+        const orgFetch = window.fetch;
+        window.fetch = function (url, options) {
+            if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(repoPath)) {
+                url = repoPath + url;
+            }
+            return orgFetch(url, options);
+        };
+    }
+})();
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <base href="/Appstore/">
-    <script type="text/javascript" src="package_00717c1a0046ee55988f856c1e720029e2c6cdfd/require.js"></script>
-    <script type="module" src="package_00717c1a0046ee55988f856c1e720029e2c6cdfd/uno-bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="package_00717c1a0046ee55988f856c1e720029e2c6cdfd/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="package_00717c1a0046ee55988f856c1e720029e2c6cdfd/uno-bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="package_00717c1a0046ee55988f856c1e720029e2c6cdfd/Uno.UI.css" />
-    <link rel="stylesheet" type="text/css" href="package_00717c1a0046ee55988f856c1e720029e2c6cdfd/Fonts.css" />
+    <script type="text/javascript" src="package_6df07e67cf99d31b1174e96a52f60237112275be/require.js"></script>
+    <script type="module" src="package_6df07e67cf99d31b1174e96a52f60237112275be/uno-bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/normalize.css" />
+<link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/uno-bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/Uno.UI.css" />
+<link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/Fonts.css" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#ffffff" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffffff" />
 
 </head>
 <body>
@@ -62,6 +62,9 @@
              loading-position="bottom"
              loading-alert="none">
 
+            <!-- Logo: change src to customize the logo -->
+            <img class="logo"
+                 src=""
             <progress></progress>
             <span class="alert"></span>
         </div>

@@ -90,7 +90,7 @@ public sealed partial class MainPage : Page
                 new DDsendBut
                 {
                     imp = "ms-appx:///Assets/matrixlogo.png",
-                    des = "Simple Matix library for dotnet ecosystem",
+                    des = "Matrix library for dotnet ecosystem",
                     nm = "Matrix",
                     Content = "Matrix",
                     dl = new List<(string, string)>

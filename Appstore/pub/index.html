@@ -2,77 +2,75 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    </style>
+    <base href="/Appstore/">
     <script>
-        // 2. THE MASTER INTERCEPTOR: Aliases "/" to "/Appstore/" globally
-        (function () {
-            const isGitHub = window.location.hostname.includes('github.io');
-            const repoPath = '/Appstore'; // No trailing slash here
+    // 2. THE MASTER INTERCEPTOR: Aliases "/" to "/Appstore/" globally
+    (function () {
+        const isGitHub = window.location.hostname.includes('github.io');
+        const repoPath = '/Appstore'; // No trailing slash here
 
-            if (isGitHub) {
-                // Fix for RequireJS (Uno's loader)
-                window.require = { baseUrl: '/Appstore/' };
+        if (isGitHub) {
+            // Fix for RequireJS (Uno's loader)
+            window.require = { baseUrl: '/Appstore/' };
 
-                // Fix for Dynamic Script Tags (Stops 404s on AppManifest.js, Uno.Wasm.js, etc.)
-                const orgCreate = document.createElement;
-                document.createElement = function (tag) {
-                    const el = orgCreate.call(document, tag);
-                    if (tag.toLowerCase() === 'script') {
-                        const descriptor = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
-                        Object.defineProperty(el, 'src', {
-                            set: function (val) {
-                                if (val.startsWith('/') && !val.startsWith(repoPath)) {
-                                    val = repoPath + val;
-                                }
-                                descriptor.set.call(this, val);
-                            },
-                            get: function () { return descriptor.get.call(this); }
-                        });
-                    }
-                    return el;
-                };
+            // Fix for Dynamic Script Tags (Stops 404s on AppManifest.js, Uno.Wasm.js, etc.)
+            const orgCreate = document.createElement;
+            document.createElement = function (tag) {
+                const el = orgCreate.call(document, tag);
+                if (tag.toLowerCase() === 'script') {
+                    const descriptor = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
+                    Object.defineProperty(el, 'src', {
+                        set: function (val) {
+                            if (val.startsWith('/') && !val.startsWith(repoPath)) {
+                                val = repoPath + val;
+                            }
+                            descriptor.set.call(this, val);
+                        },
+                        get: function () { return descriptor.get.call(this); }
+                    });
+                }
+                return el;
+            };
 
-                // Fix for Fetch (Stops 404s on .wasm and .dotnet binary files)
-                const orgFetch = window.fetch;
-                window.fetch = function (url, options) {
-                    if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(repoPath)) {
-                        url = repoPath + url;
-                    }
-                    return orgFetch(url, options);
-                };
-            }
-        })();
+            // Fix for Fetch (Stops 404s on .wasm and .dotnet binary files)
+            const orgFetch = window.fetch;
+            window.fetch = function (url, options) {
+                if (typeof url === 'string' && url.startsWith('/') && !url.startsWith(repoPath)) {
+                    url = repoPath + url;
+                }
+                return orgFetch(url, options);
+            };
+        }
+    })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <base href="/Appstore/">
-    <script type="text/javascript" src="package_6df07e67cf99d31b1174e96a52f60237112275be/require.js"></script>
-    <script type="module" src="package_6df07e67cf99d31b1174e96a52f60237112275be/uno-bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/uno-bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/Uno.UI.css" />
-    <link rel="stylesheet" type="text/css" href="package_6df07e67cf99d31b1174e96a52f60237112275be/Fonts.css" />
+
+    <script type="text/javascript" src="package_86477fee5a56979db485e43c9a65c18f02dfeecc/require.js"></script>
+    <script type="module" src="package_86477fee5a56979db485e43c9a65c18f02dfeecc/uno-bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="package_86477fee5a56979db485e43c9a65c18f02dfeecc/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="package_86477fee5a56979db485e43c9a65c18f02dfeecc/uno-bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="package_86477fee5a56979db485e43c9a65c18f02dfeecc/Uno.UI.css" />
+    <link rel="stylesheet" type="text/css" href="package_86477fee5a56979db485e43c9a65c18f02dfeecc/Fonts.css" />
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#ffffff" />
-    <style>
-        /* 1. Apply the default font to everything */
-        * {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
-        }
+	<style>
+    /* 1. Apply the default font to everything */
+    * {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
+    }
 
-        /* 2. Force the link font onto the element AND all its children */
-        a,
-        a *,
-        .uno-hyperlinkbutton,
-        .uno-hyperlinkbutton * {
-            font-family: "Times New Roman", Times, serif !important;
-            color: #0000EE !important;
-            text-decoration: underline !important;
-        }
-    </style>
-
-
+    /* 2. Force the link font onto the element AND all its children */
+    a,
+    a *,
+    .uno-hyperlinkbutton,
+    .uno-hyperlinkbutton * {
+        font-family: "Times New Roman", Times, serif !important;
+        color: #0000EE !important;
+        text-decoration: underline !important;
+    }
+	</style>
 </head>
 <body>
     <div id="uno-body" class="container-fluid uno-body">

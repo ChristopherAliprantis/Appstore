@@ -83,7 +83,7 @@ public sealed partial class MainPage : Page
                     dl = new List<(string, string)>
                     {
                         ("ToDo-winx64","ms-appx:///Assets/apps/ToDo-winx64.zip"),
-                        ("ToDo-android","ms-appx:///Assets/apps/ToDo-android.zip")
+                        ("ToDo-android","ms-appx:///Assets/apps/com.christopheraliprantis.todos-Signed.apk")
                     },
                     CornerRadius = new CornerRadius(12),
                 },

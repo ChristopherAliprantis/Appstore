@@ -4,27 +4,27 @@
   "display": "standalone",
   "name": "Appstore",
   "short_name": "Appstore",
-  "start_url": "/Appstore/",
+  "start_url": "/index.html",
   "theme_color": "#ffffff",
-  "scope": "/Appstore/",
+  "scope": "/",
   "icons": [
     {
-      "src": "package_86477fee5a56979db485e43c9a65c18f02dfeecc/icon-16.png",
+      "src": "package_d1208cddffee3fbe6bf5960aec7515d2b2f11313/icon-16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "package_86477fee5a56979db485e43c9a65c18f02dfeecc/icon-32.png",
+      "src": "package_d1208cddffee3fbe6bf5960aec7515d2b2f11313/icon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "package_86477fee5a56979db485e43c9a65c18f02dfeecc/icon-128.png",
+      "src": "package_d1208cddffee3fbe6bf5960aec7515d2b2f11313/icon-128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "package_86477fee5a56979db485e43c9a65c18f02dfeecc/icon-512.png",
+      "src": "package_d1208cddffee3fbe6bf5960aec7515d2b2f11313/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

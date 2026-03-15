@@ -56,16 +56,22 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#ffffff" />
     <style>
-        /* Put this at the VERY BOTTOM of your <head> section */
+        /* 1. Apply the default font to everything */
         * {
             font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
         }
-        a, .uno-hyperlinkbutton {
+
+        /* 2. Force the link font onto the element AND all its children */
+        a,
+        a *,
+        .uno-hyperlinkbutton,
+        .uno-hyperlinkbutton * {
             font-family: "Times New Roman", Times, serif !important;
-            color: #0000EE; /* That specific classic blue */
-            text-decoration: underline;
+            color: #0000EE !important;
+            text-decoration: underline !important;
         }
     </style>
+
 
 </head>
 <body>

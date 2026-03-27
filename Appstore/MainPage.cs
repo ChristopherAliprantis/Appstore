@@ -95,7 +95,7 @@ public sealed partial class MainPage : Page
                     Content = "Matrix",
                     dl = new List<(string, string)>
                     {
-                        ("Matrix-dll","ms-appx:///Assets/apps/Matrix-dll.zip"),
+                        ("Matrix-dll","ms-appx:///Assets/apps/Matrix-dll"),
                     },
                     CornerRadius = new CornerRadius(12),
                 }

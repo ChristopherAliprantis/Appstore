@@ -87,18 +87,6 @@ public sealed partial class MainPage : Page
                     },
                     CornerRadius = new CornerRadius(12),
                 },
-                new DDsendBut
-                {
-                    imp = "ms-appx:///Assets/matrixlogo.png",
-                    des = "Matrix library for dotnet ecosystem",
-                    nm = "Matrix",
-                    Content = "Matrix",
-                    dl = new List<(string, string)>
-                    {
-                        ("Matrix-dll","ms-appx:///Assets/apps/Matrixv1.2.3.1-dll.zip"),
-                    },
-                    CornerRadius = new CornerRadius(12),
-                }
 
             }
 

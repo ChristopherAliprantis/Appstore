@@ -82,11 +82,23 @@ public sealed partial class MainPage : Page
                     Content = "ToDo",
                     dl = new List<(string, string)>
                     {
-                        ("ToDo-winx64","ms-appx:///Assets/apps/ToDo-winx64.zip"),
+                        ("ToDo-winx64","ms-appx:///Assets/apps/ToDo-winx64-v1.0.0.zip"),
                         ("ToDo-android","ms-appx:///Assets/apps/com.christopheraliprantis.todos-Signed.apk")
                     },
                     CornerRadius = new CornerRadius(12),
                 },
+                new DDsendBut
+                {
+                    imp = "ms-appx:///Assets/DinoLogo.png",
+                    des = "The Dino Programming Language",
+                    nm = "Dino",
+                    Content = "Dino",
+                    dl = new List<(string, string)>
+                    {
+                        ("Dino-winx64","ms-appx:///Assets/apps/Dino-winx64-v0.4.4.zip"),
+                    },
+                    CornerRadius = new CornerRadius(12),
+                }
 
             }
 

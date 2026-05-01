@@ -95,7 +95,7 @@ public sealed partial class MainPage : Page
                     Content = "Dino",
                     dl = new List<(string, string)>
                     {
-                        ("Dino-winx64","ms-appx:///Assets/apps/Dino-winx64-v0.4.6.zip"),
+                        ("Dino-winx64","ms-appx:///Assets/apps/Dino-winx64-v0.4.7.zip"),
                     },
                     CornerRadius = new CornerRadius(12),
                 }

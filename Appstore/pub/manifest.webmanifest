@@ -9,22 +9,22 @@
   "scope": "/Appstore/",
   "icons": [
     {
-      "src": "package_b1fe98a8099e0e0348b1cd24ac94a0094287038b/icon-16.png",
+      "src": "package_d36b5405f3d61594c77deba4adeee87f82f43e32/icon-16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "package_b1fe98a8099e0e0348b1cd24ac94a0094287038b/icon-32.png",
+      "src": "package_d36b5405f3d61594c77deba4adeee87f82f43e32/icon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "package_b1fe98a8099e0e0348b1cd24ac94a0094287038b/icon-128.png",
+      "src": "package_d36b5405f3d61594c77deba4adeee87f82f43e32/icon-128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "package_b1fe98a8099e0e0348b1cd24ac94a0094287038b/icon-512.png",
+      "src": "package_d36b5405f3d61594c77deba4adeee87f82f43e32/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
